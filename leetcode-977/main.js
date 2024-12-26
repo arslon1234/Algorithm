@@ -18,3 +18,22 @@ var sortedSquares = function(nums) {
 
 let arr = [-4,-1,0,3,10]
 sortedSquares(arr)
+
+// function leftRightDifference(nums){
+//     let left = 0
+//     let right = nums.reduce((a,b)=> a + b,0)
+//     const result = []
+//     for(let item of nums){
+//         right -= item
+//         if((right - left) > 0){
+//             result.push(1)
+//         }else if((right - left) < 0){
+//             result.push(-1)
+//         }else {
+//             result.push(0)
+//         }
+//         left += item
+//     }
+//     return result
+
+// }console.log(leftRightDifference([1, 2, 3, 4]))
