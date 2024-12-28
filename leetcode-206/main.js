@@ -1,13 +1,12 @@
 var reverseList = function(head) {
-    let prev = null
-    let current = head
-    // console.log(current)
-    while(current !== null){
-       let next = current.next
-       current.next = prev
-       prev = current
-       current = next
+    let result = null
+    while(head !== null){
+      let nextNode = head.next
+      head.next = result
+      result = head
+      head = nextNode
     }
+    return result
 };
 const linkedList = {
     value: 1,
@@ -15,15 +14,15 @@ const linkedList = {
       value: 2,
       next: {
         value: 3,
-        next: null
-        // next: {
-        //   value: 4,
-        //   next: {
-        //     value: 5,
-        //     next: null
-        //   }
-        // }
+        next: null,
+        next: {
+          value: 4,
+          next: {
+            value: 5,
+            next: null
+          }
+        }
       }
     }
   };
-  reverseList(linkedList)
+console.log(reverseList(linkedList))
