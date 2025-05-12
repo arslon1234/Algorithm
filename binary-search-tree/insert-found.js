@@ -51,5 +51,40 @@ class BinarySearchTree {
         }
         return found
     }
+    findNode(node){
+        while(node.left){
+            node = node.left
+        }
+        return node
+    }
+    remove(value){
+        let removedNode = null
+        const removeNode=(node, key)=>{
+            if(!node) return null;
+            if(key < node.value){
+                node.left = removeNode(node.left, key)
+                return node
+            }else if(key > node.value){
+                node.right = removeNode(node.right, key)
+                return node
+            }else {
+                removedNode = new Node(node.value)
+                if(!node.left && !node.right){
+                    return null
+                }else if(!node.left){
+                    return node.right
+                }else if(!node.right){
+                    return node.left
+                }else {
+                    let curr = this.findNode(node.right)
+                    node.value = curr.value
+                    node.right = removeNode(node.right, curr.value)
+                }
+                return node
+            }
+        }
+        this.root = removeNode(this.root, value)
+        return removedNode
+    }
 
 }
