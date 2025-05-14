@@ -102,4 +102,17 @@ class BinarySearchTree {
             }
         }
     }
+    isBalance(){
+        let isBalanced = true
+        function dfs(node){
+            let leftHeight = dfs(node.left)
+            let rightHeight = dfs(node.right)
+            if(Math.abs(leftHeight - rightHeight) > 1){
+                isBalanced = false
+            }
+            return Math.max(leftHeight + rightHeight) + 1
+        }
+        let height = dfs(this.root)
+        return isBalanced
+    }
 }
