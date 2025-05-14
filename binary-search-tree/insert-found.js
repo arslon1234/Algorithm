@@ -86,5 +86,20 @@ class BinarySearchTree {
         this.root = removeNode(this.root, value)
         return removedNode
     }
-
+    findSecondLargest(){
+        if(!this.root) return;
+        if(!this.root.left || !this.root.right) return;
+        let current = this.root
+        let parent = null
+        while(true){
+            if(!current.left && !current.right){
+                return parent.value
+            }else if(!current.right){
+                return current.left
+            }else {
+                parent = current
+                current = current.right
+            }
+        }
+    }
 }
