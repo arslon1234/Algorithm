@@ -138,4 +138,14 @@ class BinarySearchTree {
     treverse(this.root);
     return data
   }
+  DFSPostOrder(){
+    let data = []
+    function treverse(node){
+        if(node.left) treverse(node.left)
+        if(node.right) treverse(node.right)
+        data.push(node.value)    
+    }
+    treverse(this.root)
+    return data
+  }
 }
